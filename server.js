@@ -3,19 +3,10 @@
  */
 
 var express = require('express');
+var middleware = require('./middleware')
 var app = express();
 var port = 6336;
 
-var middleware = {
-  requireAuthentication: function (request, response, next) {
-      console.log("private route hit");
-      next();
-  },
-    logger: function (request, response, next) {
-        console.log('[' + new Date().toString() +'] Request: ' + request.method + ' ' + request.originalUrl);
-        next();
-    }
-};
 
 //app.use(middleware.requireAuthentication); // global
 app.use(middleware.logger);
